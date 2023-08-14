@@ -23,8 +23,3 @@
 
    - name: Set root passwd
      ansible.builtin.shell: mysql_secure_installation --set-root-pass RoboShop@1
-
-
-
-
-#mysql_secure_installation --set-root-pass RoboShop@1
