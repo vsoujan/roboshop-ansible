@@ -3,5 +3,5 @@
     name: mysql
     state: installed
 
-- name: Loading the mongodb schema
+- name: Loading the mysql schema
   ansible.builtin.shell: mysql -h mysql.soujandevops.online -uroot -pRoboShop@1 < /app/schema/{{component}}.sql
