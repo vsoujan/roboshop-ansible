@@ -1,2 +1,4 @@
 component: shipping
 schema: true
+log_type: json
+log_file: /var/log/shipping.log
