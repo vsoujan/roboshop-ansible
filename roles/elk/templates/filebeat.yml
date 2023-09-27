@@ -50,9 +50,8 @@ filebeat.inputs:
 
     # Optional additional fields. These fields can be freely picked
     # to add additional information to the crawled log files for filtering
-    #fields:
-    #  level: debug
-    #  review: 1
+    fields:
+     component: {{ component }}
 
 # ============================== Filebeat modules ==============================
 
@@ -164,12 +163,17 @@ output.logstash:
   #ssl.key: "/etc/pki/client/cert.key"
 
 # ================================= Processors =================================
+#processors:
 processors:
-  - add_host_metadata:
-      when.not.contains.tags: forwarded
-  - add_cloud_metadata: ~
-  - add_docker_metadata: ~
-  - add_kubernetes_metadata: ~
+  - drop_fields:
+      fields: ["agent.ephemeral_id", "agent.id", "agent.name", "agent.type", "agent.version", "input.type"]
+      ignore_missing: false
+
+#  - add_host_metadata:
+#      when.not.contains.tags: forwarded
+#  - add_cloud_metadata: ~
+#  - add_docker_metadata: ~
+#  - add_kubernetes_metadata: ~
 
     # ================================== Logging ===================================
 
